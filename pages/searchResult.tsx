@@ -26,7 +26,7 @@ const SearchResult: NextPage = () => {
             };
             console.log(queryParams)
            
-            calculateDistance(queryParams);
+            calculateDistance(queryParams as any);
         }
         
         
@@ -62,7 +62,7 @@ const SearchResult: NextPage = () => {
                                         </Tr>
                                         <Tr>
                                             <Td>Date</Td>
-                                            <Td >{distanceResult?.date}</Td>
+                                            <Td >{distanceResult?.date as any}</Td>
                                         </Tr>
                                         <Tr>
                                             <Td>Number of Passengers</Td>

@@ -37,7 +37,7 @@ const SearchForm: FC<SearchFormParams> = ({ cities, onSubmit }) => {
     const [date, setDate] = useState<string>((new Date()).toISOString().split('T')[0]);
     const [passengerQty, setPassengerQty] = useState<number>(1);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: any) => {
         event.preventDefault();
 
         if (!cityOrigin?.value || !cityDestination?.value || (intermediateCities.length && !intermediateCities.some(i => i.value != undefined)) || !date || !passengerQty ) {
@@ -53,7 +53,7 @@ const SearchForm: FC<SearchFormParams> = ({ cities, onSubmit }) => {
         const formParams: SearchDistanceQuery = {
             origin: cityOrigin?.value,
             destination: cityDestination?.value,
-            intermediateCities: intermediateCities?.map(i => i.value),
+            intermediateCities: intermediateCities?.map(i => i.value).join(","),
             passengerQty,
             date
         };
@@ -73,18 +73,18 @@ const SearchForm: FC<SearchFormParams> = ({ cities, onSubmit }) => {
             <Skeleton height="16" isLoaded={!!cities.length}>
                 <FormControl id="cityOrigin" isRequired>
                     <FormLabel>Origin</FormLabel>
-                    <Select options={cities} value={cityOrigin} onChange={newValue => setCityOrigin(newValue)}  />
+                    <Select options={cities} value={cityOrigin} onChange={(newValue: any) => setCityOrigin(newValue)}  />
                 </FormControl>
             </Skeleton>
             
             <Skeleton isLoaded={!!cities.length}>
-                <IntermediateCitiesFormControl cities={cities} onChange={(newValue: {value: string, label: string}[]) => setIntermediateCities(newValue)} />
+                <IntermediateCitiesFormControl cities={cities as any} onChange={(newValue: {value: string, label: string}[]) => setIntermediateCities(newValue)} />
             </Skeleton>
             
             <Skeleton height="16" isLoaded={!!cities.length}>
                 <FormControl id="cityDestination" isRequired>
                     <FormLabel>Destination</FormLabel>
-                    <Select options={cities} value={cityDestination} onChange={newValue => setCityDestination(newValue)}  />
+                    <Select options={cities} value={cityDestination} onChange={(newValue: any) => setCityDestination(newValue)}  />
                 </FormControl>
             </Skeleton>
             

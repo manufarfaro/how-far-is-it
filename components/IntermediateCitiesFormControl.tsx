@@ -41,7 +41,7 @@ const IntermediateCitiesFormControl: FC<IntermediateCitiesFormControlParams> = (
                 <FormControl key={index} marginY="2" isRequired>
                     <HStack width="100%">
                         <div style={{ flexGrow: 1 }}>
-                            <Select options={citiesSelection} value={city?.value && city} onChange={newValue => handleChangeCity(newValue, index)}  />
+                            <Select options={citiesSelection as any} value={city?.value && city} onChange={(newValue: any) => handleChangeCity(newValue, index)}  />
                         </div>
                         <IconButton aria-label='delete intermediate city' icon={<DeleteIcon />} onClick={() => removeCity(index)} />
                     </HStack>

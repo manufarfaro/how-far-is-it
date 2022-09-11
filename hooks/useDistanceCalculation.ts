@@ -7,7 +7,7 @@ const useDistanceCalculation = () => {
     const [error, setError] = useState<unknown>();
     const [distanceResult, setDistanceResult] = useState<DistanceCalculationResult>();
 
-    async function calculateDistance(params: SearchDistanceQuery) {
+    async function calculateDistance(params: any[]) {
         try {
             setLoading(true);
             const response = await fetch("/api/distance/calculate?" + new URLSearchParams({...params}));
