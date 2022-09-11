@@ -31,5 +31,8 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
         passengerQty: parseInt(_req.query.passengerQty as string),
         date: new Date(_req.query.date as string)
     });
-    debounce(() => res.status(200).json(distanceResult), 300);
+
+    setTimeout(() => {
+        res.status(200).json(distanceResult)
+      }, 1000);
 }
