@@ -31,3 +31,7 @@ jobs:
       # Finally, run our tests
       - name: Run the tests
         run: npm test
+
+      # Finally, run our tests
+      - name: Run coverage
+        run: npm run coverage
