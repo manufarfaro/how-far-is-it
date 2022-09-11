@@ -95,8 +95,8 @@ const SearchResult: NextPage = () => {
                                                 </Tr>
                                             </Thead>
                                             <Tbody>
-                                                {distanceResult?.tracks?.map(track => 
-                                                    <Tr>
+                                                {distanceResult?.tracks?.map((track, index) => 
+                                                    <Tr key={index}>
                                                         <Td>{track.origin.name}</Td>
                                                         <Td>{track.end.name}</Td>
                                                         <Td>{track.distance}</Td>
