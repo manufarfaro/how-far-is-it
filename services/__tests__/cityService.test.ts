@@ -1,7 +1,6 @@
 import { getAll, getOneFromName } from "../cityService";
 
 import dummyCities from "../../data/cities.json";
-console.log(dummyCities);
 
 const mockDefault = () => ({
     __esModule: true,
