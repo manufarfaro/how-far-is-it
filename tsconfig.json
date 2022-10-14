@@ -13,14 +13,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "types": ["cypress", "@testing-library/cypress", "node", "jest"]
   },
-  "typeRoots": [
-    "node_modules/@types"
-  ],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": [
     "node_modules",
-    "cypress"
+    "**/*.spec.ts"
   ]
 }
