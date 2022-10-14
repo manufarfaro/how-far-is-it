@@ -46,7 +46,7 @@ const SearchForm: FC<SearchFormParams> = ({ cities, onSubmit }) => {
                 description: 'There are invalid fields in your form, please check them and try again...',
                 status: 'error',
                 duration: 2000,
-                isClosable: true
+                isClosable: true,
             });
             return;
         }
@@ -61,64 +61,66 @@ const SearchForm: FC<SearchFormParams> = ({ cities, onSubmit }) => {
     }
 
     return (
-        <Stack
-            spacing={4}
-            w={'full'}
-            maxW={'md'}
-            bg={useColorModeValue('white', 'gray.700')}
-            rounded={'xl'}
-            boxShadow={'lg'}
-            p={6}
-            my={12}>
-            <Skeleton height="16" isLoaded={!!cities.length}>
-                <FormControl id="cityOrigin" isRequired>
-                    <FormLabel>Origin</FormLabel>
-                    <Select options={cities} value={cityOrigin} onChange={(newValue: any) => setCityOrigin(newValue)}  />
-                </FormControl>
-            </Skeleton>
-            
-            <Skeleton isLoaded={!!cities.length}>
-                <IntermediateCitiesFormControl cities={cities as any} onChange={(newValue: {value: string, label: string}[]) => setIntermediateCities(newValue)} />
-            </Skeleton>
-            
-            <Skeleton height="16" isLoaded={!!cities.length}>
-                <FormControl id="cityDestination" isRequired>
-                    <FormLabel>Destination</FormLabel>
-                    <Select options={cities} value={cityDestination} onChange={(newValue: any) => setCityDestination(newValue)}  />
-                </FormControl>
-            </Skeleton>
-            
-            <Skeleton height="16" isLoaded={!!cities.length}>
-                <FormControl id="date" isRequired>
-                    <FormLabel>Date</FormLabel>
-                    <Input
-                    placeholder="Date"
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
+        <form data-testid="search-form">
+            <Stack
+                spacing={4}
+                w={'full'}
+                maxW={'md'}
+                bg={useColorModeValue('white', 'gray.700')}
+                rounded={'xl'}
+                boxShadow={'lg'}
+                p={6}
+                my={12}>
+                <Skeleton height="16" isLoaded={!!cities.length}>
+                    <FormControl id="cityOrigin" isRequired>
+                        <FormLabel>Origin</FormLabel>
+                        <Select id='form-city-origin' name='city-origin' data-testid="city-origin" options={cities} value={cityOrigin} onChange={(newValue: any) => setCityOrigin(newValue)}  />
+                    </FormControl>
+                </Skeleton>
+                
+                <Skeleton isLoaded={!!cities.length}>
+                    <IntermediateCitiesFormControl cities={cities as any} onChange={(newValue: {value: string, label: string}[]) => setIntermediateCities(newValue)} />
+                </Skeleton>
+                
+                <Skeleton height="16" isLoaded={!!cities.length}>
+                    <FormControl id="cityDestination" isRequired>
+                        <FormLabel>Destination</FormLabel>
+                        <Select id="form-city-destination" name="city-destination" options={cities} value={cityDestination} onChange={(newValue: any) => setCityDestination(newValue)}  />
+                    </FormControl>
+                </Skeleton>
+                
+                <Skeleton height="16" isLoaded={!!cities.length}>
+                    <FormControl id="date" isRequired>
+                        <FormLabel>Date</FormLabel>
+                        <Input
+                        data-testid="travel-date"
+                            name="date"
+                            placeholder="Date"
+                            type="date"
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                        />
+                    </FormControl>
+                </Skeleton>
 
-                    />
-                </FormControl>
-            </Skeleton>
-
-            <Skeleton height="16" isLoaded={!!cities.length}>
-                <FormControl id="passengerQty" isRequired>
-                    <FormLabel>Number of Passengers</FormLabel>
-                    <NumberInput value={passengerQty} onChange={(_, value) => setPassengerQty(value)} min={1} max={20}>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                        <NumberIncrementStepper />
-                        <NumberDecrementStepper />
-                    </NumberInputStepper>
-                    </NumberInput>
-                </FormControl>
-            </Skeleton>
-            
-            <Skeleton height="16" isLoaded={!!cities.length}>
-                <Input type="submit" variant={'link'} value="Search" onClick={handleSubmit} />
-            </Skeleton>
-            
-        </Stack>
+                <Skeleton height="16" isLoaded={!!cities.length}>
+                    <FormControl id="passengerQty" isRequired>
+                        <FormLabel>Number of Passengers</FormLabel>
+                        <NumberInput  value={passengerQty} onChange={(_, value) => setPassengerQty(value)} min={1} max={20}>
+                        <NumberInputField data-testid="passenger-qty" />
+                        <NumberInputStepper>
+                            <NumberIncrementStepper />
+                            <NumberDecrementStepper />
+                        </NumberInputStepper>
+                        </NumberInput>
+                    </FormControl>
+                </Skeleton>
+                
+                <Skeleton height="16" isLoaded={!!cities.length}>
+                    <Input data-testid="search" type="submit" variant="link" value="Search" onClick={handleSubmit} />
+                </Skeleton>
+            </Stack>
+        </form>
     );
 };
 

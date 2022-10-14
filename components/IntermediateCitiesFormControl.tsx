@@ -35,13 +35,13 @@ const IntermediateCitiesFormControl: FC<IntermediateCitiesFormControlParams> = (
         <>
             <Flex justify={'space-between'} paddingY="4">
                 <Text >Intermediate Cities</Text>
-                <div><Button aria-label='Add intermediate city' size='xs' rightIcon={<AddIcon />} onClick={addCityForm}>Add</Button></div>
+                <div><Button data-testid="add-intermediate" aria-label='Add intermediate city' size='xs' rightIcon={<AddIcon />} onClick={addCityForm}>Add</Button></div>
             </Flex>
             { citiesList?.map((city, index) =>
                 <FormControl key={index} marginY="2" isRequired>
                     <HStack width="100%">
                         <div style={{ flexGrow: 1 }}>
-                            <Select options={citiesSelection as any} value={city?.value && city} onChange={(newValue: any) => handleChangeCity(newValue, index)}  />
+                            <Select id={`form-intermedate-city-${index}`} options={citiesSelection as any} value={city?.value && city} onChange={(newValue: any) => handleChangeCity(newValue, index)}  />
                         </div>
                         <IconButton aria-label='delete intermediate city' icon={<DeleteIcon />} onClick={() => removeCity(index)} />
                     </HStack>
