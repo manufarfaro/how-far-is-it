@@ -52,7 +52,7 @@ const SearchResult: NextPage = () => {
                                     <Tbody>
                                     <Tr>
                                             <Td>Origin</Td>
-                                            <Td>
+                                            <Td data-testid="city-origin">
                                                 { distanceResult?.origin?.name }
                                             </Td>
                                         </Tr>

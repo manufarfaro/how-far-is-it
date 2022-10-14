@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 import SearchForm from '../components/SearchForm';
 import useGetCities from '../hooks/useGetCities';
-import { City } from '../models/City';
 import { SearchDistanceQuery } from '../models/SearchDistanceQuery';
 import { useRouter } from 'next/router';
 
@@ -19,7 +18,7 @@ type HomeParams = {
 }
 
 const Home: NextPage<HomeParams> = () => {
-  const { cities, loading, error } = useGetCities();
+  const { cities } = useGetCities();
   const { push } = useRouter();
 
   const handleSubmit = (params: SearchDistanceQuery) => {
