@@ -1,4 +1,4 @@
-import { getDistanceCalculation } from "../distanceService";
+import { getDistanceCalculation } from "../../src/services/distanceService";
 
 const dummyCities = [
     {

@@ -13,23 +13,30 @@ const IntermediateCitiesFormControl: FC<IntermediateCitiesFormControlParams> = (
     const [citiesSelection, _] = useState(cities);
 
     const addCityForm = useCallback(() => {
-        setCitiesList([...citiesList, { label: "", value: "" }]);
-        onChange(citiesList);
-    }, [citiesList]);
+        setCitiesList((prev) => {
+            const next = [...prev, { label: "", value: "" }];
+            onChange(next);
+            return next;
+        });
+    }, [onChange]);
 
     const handleChangeCity = useCallback((newValue: SelectDropdownCity, index: number) => {
-        const newCitiesList = citiesList;
-        newCitiesList[index] = newValue;
-        setCitiesList([...newCitiesList]);
-        onChange(citiesList);
-    }, [citiesList]);
+        setCitiesList((prev) => {
+            const next = [...prev];
+            next[index] = newValue;
+            onChange(next);
+            return next;
+        });
+    }, [onChange]);
 
-    const removeCity = (index: number) => {
-        const newCitiesList = citiesList;
-        newCitiesList.splice(index, 1);
-        setCitiesList([...newCitiesList]);
-        onChange(citiesList);
-    };
+    const removeCity = useCallback((index: number) => {
+        setCitiesList((prev) => {
+            const next = [...prev];
+            next.splice(index, 1);
+            onChange(next);
+            return next;
+        });
+    }, [onChange]);
 
     return(
         <>

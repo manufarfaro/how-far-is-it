@@ -1,7 +1,8 @@
-How far is it?
-===
+# How far is it?
 
-This is a simple app that uses React + NextJS + Typescript + Hooks.
+[![CI/CD Pipeline](https://github.com/manufarfaro/how-far-is-it/actions/workflows/ci.yml/badge.svg)](https://github.com/manufarfaro/how-far-is-it/actions/workflows/ci.yml)
+
+This is a simple app that uses React + NextJS + Typescript + Playwright.
 
 ## Running the project
 

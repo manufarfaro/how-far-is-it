@@ -32,7 +32,7 @@ const SearchResult: NextPage = () => {
         
 
         
-    }, [router]);
+    }, [router, calculateDistance]);
 
     return(
         <>
