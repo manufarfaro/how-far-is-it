@@ -10,8 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --",
-    "coverage": "jest --collectCoverage --",
+    "test": "jest",
+    "coverage": "jest --collectCoverage",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui"
   },
