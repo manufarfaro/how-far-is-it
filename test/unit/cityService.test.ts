@@ -1,13 +1,13 @@
-import { getAll, getOneFromName } from "../cityService";
+import { getAll, getOneFromName } from "../../src/services/cityService";
 
-import dummyCities from "../../data/cities.json";
+import dummyCities from "../../src/data/cities.json";
 
 const mockDefault = () => ({
     __esModule: true,
     default: dummyCities,
 });
 
-jest.mock('../../data/cities.json', mockDefault);
+jest.mock('../../src/data/cities.json', mockDefault);
 
 const mockCities = [{
     latitude: 1.1,
